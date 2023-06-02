@@ -7,23 +7,10 @@ const SingleBox = ({
   percentage,
   totalPercentage,
   updatePercentage,
-  updatePercentageById,
+
   id,
 }) => {
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      const accumalePercentage =
-        totalPercentage - percentage + Number(e.target.value);
-
-      if (accumalePercentage > 100) {
-        toast.error("Weightage cannot exceed 100%");
-        return;
-      }
-      updatePercentageById(id, Number(e.target.value));
-      updatePercentage(Number(e.target.value));
-      toast.success("Weightage has been updated");
-    }
-  };
+ 
   return (
     <GridItem
       background="rgba(221, 225, 237, 0.24)"
@@ -57,7 +44,7 @@ const SingleBox = ({
       </Checkbox>
       <Flex justify={"center"} align={"center"} gap={2}>
         <Input
-          onKeyPress={handleKeyPress}
+          
           bg="#FFFFFF"
           border="1px solid rgba(3, 201, 136, 0.2)"
           borderRadius="20px"

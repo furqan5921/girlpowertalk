@@ -7,7 +7,6 @@ const CheckBoxes = ({
   data,
   totalPercentage,
   updatePercentage,
-  updatePercentageById,
 }) => {
   return (
     <Grid
@@ -28,7 +27,6 @@ const CheckBoxes = ({
             value={el.key}
             percentage={el.percentage}
             totalPercentage={totalPercentage}
-            updatePercentageById={updatePercentageById}
             id={el.id}
           />
         ))}
