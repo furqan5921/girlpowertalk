@@ -4,7 +4,7 @@ import meterIcon from "../assets/meterIcon.png";
 import { BsArrowRightShort } from "react-icons/bs";
 const Meter = ({ totalPercentage }) => {
   return (
-    <Box mt={"2rem"} px={{ base: "2rem", md: "5rem" }}>
+    <Box mt={"50px"} px={{ base: "2rem", md: "5rem" }}>
       <Flex justify={"space-between"}>
         <Text
           fontFamily="IBM Plex Sans"
@@ -45,7 +45,7 @@ const Meter = ({ totalPercentage }) => {
         borderRadius="50px"
         transform="matrix(-1, 0, 0, 1, 0, 0)"
         h={"45px"}
-        mt={"1rem"}
+        mt={"32px"}
       >
         <Image
           pl={{
@@ -56,7 +56,7 @@ const Meter = ({ totalPercentage }) => {
           alt="Meter Icon"
         />
       </Box>
-      <Flex justify={"center"} align={"center"} gap={1} mt={"1rem"}>
+      <Flex justify={"center"} align={"center"} gap={1} mt={"57px"} mb={"60px"}>
         <Button
           fontFamily="IBM Plex Sans"
           fontStyle="normal"

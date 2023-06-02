@@ -1,9 +1,14 @@
 import { Grid } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 
 import SingleBox from "./SingleBox";
 
-const CheckBoxes = ({ data, totalPercentage, updatePercentage }) => {
+const CheckBoxes = ({
+  data,
+  totalPercentage,
+  updatePercentage,
+  updatePercentageById,
+}) => {
   return (
     <Grid
       templateColumns={{
@@ -12,17 +17,19 @@ const CheckBoxes = ({ data, totalPercentage, updatePercentage }) => {
         lg: "repeat(4, 1fr)",
       }}
       gap={7}
-      mt={"3rem"}
-      
+      mt={"65px"}
+      p={{ base: "1rem", md: "2rem" }}
     >
       {data &&
-        data.map((el, i) => (
+        data.map((el) => (
           <SingleBox
             updatePercentage={updatePercentage}
-            key={i}
+            key={el.id}
             value={el.key}
             percentage={el.percentage}
             totalPercentage={totalPercentage}
+            updatePercentageById={updatePercentageById}
+            id={el.id}
           />
         ))}
     </Grid>

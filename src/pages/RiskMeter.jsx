@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import Introduction from "../components/Introduction";
 import CheckBoxes from "../components/CheckBoxes";
 import Meter from "../components/Meter";
@@ -63,9 +63,21 @@ const RiskMeter = () => {
     calculateTotalPercentage(initialData.data)
   );
   const updatePercentage = (value) => {
-    setTotalPercentage((prev) => prev + value);
+    setTotalPercentage(value);
+  };
+  const updatePercentageById = (id, percentage) => {
+    setData((prevData) => {
+      const updatedData = prevData.data.map((item) => {
+        if (item.id === id) {
+          return { ...item, percentage: percentage };
+        }
+        return item;
+      });
+      return { ...prevData, data: updatedData };
+    });
   };
   console.log(totalPercentage);
+  console.log(data.data);
   return (
     <Box>
       <Introduction heading={data.heading} details={data.details} />
@@ -73,6 +85,7 @@ const RiskMeter = () => {
         updatePercentage={updatePercentage}
         data={data.data}
         totalPercentage={totalPercentage}
+        updatePercentageById={updatePercentageById}
       />
       <Meter totalPercentage={totalPercentage} />
     </Box>

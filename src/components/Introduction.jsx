@@ -20,7 +20,7 @@ const Introduction = ({ heading, details }) => {
         fontSize="24px"
         fontWeight={400}
         textAlign="center"
-        p={"1rem"}
+        p={"16px"}
       >
         {details}
       </Text>
