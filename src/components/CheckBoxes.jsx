@@ -3,11 +3,7 @@ import React from "react";
 
 import SingleBox from "./SingleBox";
 
-const CheckBoxes = ({
-  data,
-  totalPercentage,
-  updatePercentage,
-}) => {
+const CheckBoxes = ({ data ,updateById,totalPercentage}) => {
   return (
     <Grid
       templateColumns={{
@@ -22,12 +18,13 @@ const CheckBoxes = ({
       {data &&
         data.map((el) => (
           <SingleBox
-            updatePercentage={updatePercentage}
             key={el.id}
             value={el.key}
             percentage={el.percentage}
-            totalPercentage={totalPercentage}
+            isChecked={el.isChecked}
             id={el.id}
+            updateById={updateById}
+            totalPercentage={totalPercentage}
           />
         ))}
     </Grid>

@@ -1,16 +1,36 @@
 import { Checkbox, Text, Flex, GridItem, Image, Input } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import CautionIcon from "../assets/cautionIcon.png";
 import toast, { Toaster } from "react-hot-toast";
 const SingleBox = ({
   value,
   percentage,
-  totalPercentage,
-  updatePercentage,
-
   id,
+  isChecked,
+  updateById,
+  totalPercentage,
 }) => {
- 
+  const [checked, setChecked] = useState(isChecked);
+  const [inputValue, setInputValue] = useState("");
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && e.target.value !== "") {
+      const inputValue = Number(e.target.value);
+      const accumulatedPercentage = totalPercentage - percentage + inputValue;
+      console.log("Accumulated", accumulatedPercentage);
+      if (accumulatedPercentage > 100) {
+        toast.error("Weightage cannot exceed 100%");
+        return;
+      }
+      updateById(id, inputValue, checked);
+      toast.success("Weightage has been updated");
+      setInputValue("");
+    }
+  };
+  const handleChecked = (e) => {
+    setChecked(e.target.checked);
+    updateById(id, percentage, e.target.checked);
+  };
+  console.log(percentage);
   return (
     <GridItem
       background="rgba(221, 225, 237, 0.24)"
@@ -23,14 +43,12 @@ const SingleBox = ({
         <Image _hover={{ cursor: "pointer" }} p={"1rem"} src={CautionIcon} />
       </Flex>
       <Checkbox
-        onChange={(e) =>
-          e.target.checked
-            ? updatePercentage(-percentage)
-            : updatePercentage(percentage)
-        }
+        onChange={handleChecked}
         colorScheme="green"
         p={"1rem"}
         size={"lg"}
+        isChecked={checked}
+        onKeyPress={handleKeyPress}
       >
         <Text
           fontFamily="IBM Plex Sans"
@@ -44,7 +62,9 @@ const SingleBox = ({
       </Checkbox>
       <Flex justify={"center"} align={"center"} gap={2}>
         <Input
-          
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyPress={handleKeyPress}
           bg="#FFFFFF"
           border="1px solid rgba(3, 201, 136, 0.2)"
           borderRadius="20px"
