@@ -63,8 +63,9 @@ const RiskMeter = () => {
     calculateTotalPercentage(initialData.data)
   );
   const updatePercentage = (value) => {
-    setTotalPercentage(value);
+    setTotalPercentage((prev)=> prev+value);
   };
+  
   const updatePercentageById = (id, percentage) => {
     setData((prevData) => {
       const updatedData = prevData.data.map((item) => {
@@ -76,8 +77,7 @@ const RiskMeter = () => {
       return { ...prevData, data: updatedData };
     });
   };
-  console.log(totalPercentage);
-  console.log(data.data);
+  
   return (
     <Box>
       <Introduction heading={data.heading} details={data.details} />

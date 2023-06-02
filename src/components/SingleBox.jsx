@@ -14,13 +14,13 @@ const SingleBox = ({
     if (e.key === "Enter") {
       const accumalePercentage =
         totalPercentage - percentage + Number(e.target.value);
-      
+
       if (accumalePercentage > 100) {
         toast.error("Weightage cannot exceed 100%");
         return;
       }
       updatePercentageById(id, Number(e.target.value));
-      updatePercentage(accumalePercentage);
+      updatePercentage(Number(e.target.value));
       toast.success("Weightage has been updated");
     }
   };
