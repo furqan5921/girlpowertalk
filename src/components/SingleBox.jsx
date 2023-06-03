@@ -37,7 +37,7 @@ const SingleBox = ({
       border="1px solid rgba(3, 201, 136, 0.2)"
       borderRadius="17px"
       boxSizing="border-box"
-      p={4}
+      p={1}
     >
       <Flex justify={"flex-end"}>
         <Image _hover={{ cursor: "pointer" }} p={"1rem"} src={CautionIcon} />
